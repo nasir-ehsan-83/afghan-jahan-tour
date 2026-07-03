@@ -1,3 +1,28 @@
+# Dependencies
 /node_modules
+
+# Production build
 /dist
+
+# Environment variables
 .env
+.env.local
+
+# Prisma Generated Client
+/src/generated/prisma
+*.db
+*.db-journal
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor settings (VS Code / WebStorm)
+.vscode/
+.idea/
+*.swp
+
+# OS Files (Linux / Fedora)
+.directory
+.DS_Store
