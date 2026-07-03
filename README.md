@@ -5,9 +5,21 @@
 ![Prisma](https://shields.io)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-A robust RESTful API built for a fictional tour company called Afghan Jahan Tour, focusing on strict type safety, modular design, and secure database relationships.
+A robust RESTful API built for a tour company called Afghan Jahan Tour, focusing on strict type safety, modular design, and secure database relationships.
 
 The project explores how a modern booking backend can be structured using Express and a highly strict TypeScript configuration while maintaining type guarantees from the database layer up to the API endpoints.
+
+---
+
+## Architectural Choice: Express with NestJS Spirit
+
+Unlike traditional, unstructured Express applications, **this project deliberately implements the modular architecture and clean patterns of NestJS on top of raw Express.** 
+
+By avoiding NestJS's heavy runtime decorators and Dependency Injection (DI) boilerplate, the project achieves:
+- **Raw Performance:** Leveraging the pure, lightweight speed of Express.
+- **Strict Modularity:** Features are isolated into self-contained domains (`users`, `tours`, etc.), each containing its own routes, controller, service, and data transfer types.
+- **Separation of Concerns:** Controllers exclusively handle HTTP requests/responses, Services contain pure business logic, and DTOs manage Zod schemas.
+- **Future-Proof Design:** The strict structural alignment makes migrating to the full NestJS framework effortless if scaling demands it in the future.
 
 ---
 
@@ -16,7 +28,7 @@ The project explores how a modern booking backend can be structured using Expres
 Current and planned features include:
 
 - User Authentication & Authorization (JWT, Role-Based Access)
-- Tour Management (Cruds, Filtering, Sorting, Pagination)
+- Tour Management (CRUDs, Filtering, Sorting, Pagination)
 - Booking System (Capacity Control, Concurrency Handling)
 - Review & Rating System
 - Payment Integration & Order Tracking
@@ -28,14 +40,17 @@ Current and planned features include:
 
 ```text
 prisma/
-└── schema.prisma  # Prisma database schemas and relations
+├── schema.prisma       # Prisma database schemas and relations
+└── seed.ts             # Database seeding scripts
 src/
-├── config/        # Prisma client instantiation & environmental configs
-├── controllers/   # Request handlers and business logic
-├── middlewares/   # Request validation, authentication, and error filters
-├── models/        # Custom TypeScript types and interfaces
-├── routes/        # API endpoint declarations
-└── index.ts       # Application entry point
+├── config/             # Global configurations (Prisma client singleton, etc.)
+├── users/              # Self-contained feature module (NestJS style)
+│   ├── user.dto.ts     # Centralized Zod validation schemas and types
+│   ├── users.controller.ts # Request/response handlers
+│   ├── users.routes.ts # Feature specific endpoint definitions
+│   └── user.service.ts # Core business logic and database queries
+├── app.ts              # Express initialization, core middlewares (CORS, JSON), and route mounting
+└── main.ts             # Application bootstrapper and environment initialization
 ```
 
 ---
@@ -104,7 +119,7 @@ npm install
 Create a `.env` file in the root directory:
 ```env
 PORT=3000
-DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/afghan_jahan_tour?schema=public"
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/afghan_tour?schema=public"
 ```
 
 ### Run Database Migrations
