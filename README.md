@@ -47,7 +47,6 @@ src/
 ├── users/              # Self-contained feature module (NestJS style)
 │   ├── user.dto.ts     # Centralized Zod validation schemas and types
 │   ├── users.controller.ts # Request/response handlers
-│   ├── users.routes.ts # Feature specific endpoint definitions
 │   └── user.service.ts # Core business logic and database queries
 ├── app.ts              # Express initialization, core middlewares (CORS, JSON), and route mounting
 └── main.ts             # Application bootstrapper and environment initialization
@@ -62,8 +61,6 @@ src/
 - Tours (Details, Pricing, Capacity, Dates)
 - Bookings (Relational maps connecting users and tours)
 - Reviews (User feedback on individual tours)
-
-*Additional modules and schema refinements are added incrementally as the API architecture evolves.*
 
 ---
 
@@ -106,7 +103,7 @@ Ensure you have Node.js (v20+) and a local PostgreSQL instance running.
 
 ### Clone the Repository
 ```bash
-git clone https://github.com
+git clone https://github.com/nasir-ehsan-83/afghan-jahan-tour.git
 cd afghan-jahan-tour
 ```
 
@@ -116,11 +113,7 @@ npm install
 ```
 
 ### Configure Environment Variables
-Create a `.env` file in the root directory:
-```env
-PORT=3000
-DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/afghan_tour?schema=public"
-```
+Create a `.env` file in the root directory as .env.example
 
 ### Run Database Migrations
 ```bash
