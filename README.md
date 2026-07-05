@@ -1,13 +1,15 @@
 # afghan-jahan-tour
 
-![Node.js](https://shields.io)
-![TypeScript](https://shields.io)
-![Prisma](https://shields.io)
-![License](https://img.shields.io/badge/license-MIT-blue)
+[![Node.js](https://shields.io)](https://nodejs.org)
+[![TypeScript](https://shields.io)](https://typescriptlang.org)
+[![Prisma](https://shields.io)](https://prisma.io)
+[![PostgreSQL](https://shields.io)](https://postgresql.org)
+[![Express.js](https://shields.io)](https://expressjs.com)
+![License](https://shields.io)
 
-A robust RESTful API built for a tour company called Afghan Jahan Tour, focusing on strict type safety, modular design, and secure database relationships.
+A robust RESTful API engineered for **Afghan Jahan Tour**, focusing on strict type safety, modular architecture, and secure database relationships.
 
-The project explores how a modern booking backend can be structured using Express and a highly strict TypeScript configuration while maintaining type guarantees from the database layer up to the API endpoints.
+This project implements a high-performance booking engine using **Express.js** with a highly strict **TypeScript** configuration, ensuring type guarantees from the Prisma database layer all the way to the API response.
 
 ---
 
