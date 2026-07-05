@@ -9,3 +9,18 @@ generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
+
+model User {
+  id          Int         @id   @default(autoincrement())
+  name        String?   
+  username    String      @unique
+  email       String      @unique
+  role        Role  
+  createdAt   DateTime    @default(now())
+  createAt    DateTime    @updatedAt
+}
+
+enum Role {
+  ADMIN
+  USER
+}
