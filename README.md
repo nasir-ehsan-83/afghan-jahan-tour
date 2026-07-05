@@ -40,16 +40,21 @@ Current and planned features include:
 
 ```text
 prisma/
-├── schema.prisma       # Prisma database schemas and relations
-└── seed.ts             # Database seeding scripts
+├── schema.prisma           
+└── seed.ts                 
 src/
-├── config/             # Global configurations (Prisma client singleton, etc.)
-├── users/              # Self-contained feature module (NestJS style)
-│   ├── user.dto.ts     # Centralized Zod validation schemas and types
-│   ├── users.controller.ts # Request/response handlers
-│   └── user.service.ts # Core business logic and database queries
-├── app.ts              # Express initialization, core middlewares (CORS, JSON), and route mounting
-└── main.ts             # Application bootstrapper and environment initialization
+├── config/   
+├── common/ 
+│   ├── middlewares/   
+│   └── utils/                    
+├── users/                  
+│   ├── users.controller.ts 
+│   ├── users.dto.ts
+│   ├── users.module.ts 
+│   ├── users.srevice.ts 
+│   └── users.validator.ts     
+├── app.ts                  
+└── main.ts                 
 ```
 
 ---
