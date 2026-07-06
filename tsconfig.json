@@ -9,7 +9,7 @@
     "target": "esnext",
     "lib": ["esnext"],
     "types": ["node", "express"],
-
+    "typeRoots": ["./node_modules/@types", "./types"],
     // Other Outputs
     "sourceMap": true,
     "declaration": true,
@@ -29,5 +29,5 @@
     "moduleDetection": "force",
     "skipLibCheck": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "types/**/*.d.ts"]
 }
