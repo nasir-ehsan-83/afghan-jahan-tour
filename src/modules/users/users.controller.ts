@@ -2,10 +2,14 @@ import type {
     Request, 
     Response 
 } from 'express';
-import { UsersService } from "./users.service.js";
-import { hashPassword } from '../../core/security.js';
 import { asyncHandler } from '../../common/utils/async.handler.js';
+import { 
+    conflict, 
+    notFound 
+} from '../../common/errors/index.js';
+import { hashPassword } from '../../core/security.js';
 import type { CreateUser } from './users.type.js';
+import { UsersService } from "./users.service.js";
 
 export class UsersController {
     
@@ -19,10 +23,7 @@ export class UsersController {
         
         // if user already exists
         if (await this.usersService.userExist({ username, email })) {
-            return res.status(201).json({
-                status: "error",
-                message: "User already exist"
-            });
+            throw conflict("User already exist");
         }
 
         req.body.password = await hashPassword(req.body.password);
@@ -34,7 +35,7 @@ export class UsersController {
 
         return res.status(200).json({
             message: "User created successfully ",
-            newUser
+            user: newUser
         });
     });
 
@@ -44,10 +45,7 @@ export class UsersController {
         const user =  this.usersService.getUser(+id!);
 
         if (!user) {
-            return res.status(404).json({
-                status: "error",
-                message: "User not found"
-            });
+            throw notFound("User not found");
         }
 
         return res.status(200).json({
