@@ -1,9 +1,17 @@
-import z from "zod";
-import type { createUserSchema } from "./users.validator.js";
+export interface CreateUser {
+    username: string;
+    email: string;
+    password: string;
+    name?: string | null;
+}
 
 export interface ExistUser {
     username: string;
     email: string;
 }
 
-export type CreateUser = z.infer<typeof createUserSchema>
+export type SafeUser = Omit<CreateUser, 'password'> & {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+};
