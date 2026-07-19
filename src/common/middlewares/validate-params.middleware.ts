@@ -5,8 +5,8 @@ import type {
 } from "express";
 import { ZodType } from "zod";
 
-export const validateParams = <T extends Record<string, string>>(schema: ZodType<T>) => {
-    return (req: Request<T, any, any, any>, res: Response, next: NextFunction) => {
+export const validateParams = <T extends Record<string, any>>(schema: ZodType<T>) => {
+    return (req: Request, res: Response, next: NextFunction) => {
         const result = schema.safeParse(req.params);
 
         if (!result.success) {
@@ -17,7 +17,7 @@ export const validateParams = <T extends Record<string, string>>(schema: ZodType
             });
         }
 
-        req.params = result.data;
+        req.params = result.data as any;
         next();
     }
 };

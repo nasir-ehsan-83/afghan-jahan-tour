@@ -6,3 +6,7 @@ export const createUserSchema = z.object({
     email: z.string().email("Email Format is not Valid").min(7, "Email's length should not be less than 7 characters"),
     password: z.string().min(8, "Password's length should not be less than 8 characters"),
 });
+
+export const getUserParamsSchema = z.object({
+    id: z.coerce.number()
+});
