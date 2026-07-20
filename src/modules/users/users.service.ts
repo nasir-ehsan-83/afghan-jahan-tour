@@ -13,7 +13,8 @@ export class UsersService {
                 email: true,
                 name: true,
                 createdAt: true,
-                updatedAt: true
+                updatedAt: true,
+                role: true
             }
         });
     }
@@ -30,7 +31,8 @@ export class UsersService {
                 email: true,
                 name: true,
                 createdAt: true,
-                updatedAt: true
+                updatedAt: true,
+                role: true
             }
         });
     };

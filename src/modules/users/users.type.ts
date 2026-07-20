@@ -10,8 +10,9 @@ export interface ExistUser {
     email: string;
 }
 
-export type SafeUser = Omit<CreateUser, 'password'> & {
+export type ResponseUser = Omit<CreateUser, 'password'> & {
     id: number;
+    role: "ADMIN" | "USER";
     createdAt: Date;
-    updatedAt: Date;
+    updatedAt?: Date;
 };

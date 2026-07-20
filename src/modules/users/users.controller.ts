@@ -38,7 +38,7 @@ export class UsersController {
         const id = Number(req.params.id);
 
         if (isNaN(id)) {
-            throw new Error('Invalid ID format');
+            throw new Error("Invalid ID format");
         }
 
         const user = await this.usersService.getUser(id);
